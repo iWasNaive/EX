@@ -1,11 +1,11 @@
-const rateLimit = require("express-rate-limit")
+const rateLimit = require("express-rate-limit");
 
 module.exports = rateLimit({
-  windowMs: 15 * 60 * 1000, 
-  max: 3, 
+  windowMs: 10 * 1000,
+  max: 20,
   message: {
-    error: 'تعداد درخواست‌های شما بیش از حد مجاز است د.'
+    error: "تعداد درخواست ها بیش از حد بود ۱۰ ثانیه صبر کنید",
   },
-  standardHeaders: true, 
-  legacyHeaders: false, 
+  standardHeaders: true,
+  legacyHeaders: false,
 });
