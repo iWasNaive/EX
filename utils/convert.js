@@ -1,10 +1,24 @@
+const axios = require("axios");
+const NodeCache = require("node-cache");
 
-module.exports = async () => {
-  // const result = await axios.get(`https://api.frankfurter.app/latest?from=USD&to=EUR`)
-  // console.log(result);
+const myChache = new NodeCache({ stdTTL: 10 });
 
-  axios
-    .get("https://google.com")
-    .then((res) => console.log("OK"))
-    .catch((err) => console.log("FAILED", err.message));
+module.exports = async (amount, from, to) => {
+  const cacheKey = `${from}-${to}`;
+
+  try {
+    const chacheRate = NodeCache.get(cacheKey);
+    console.log(chacheRate);
+
+    // if (chacheRate) {
+    // }
+
+    // const response = await axios.get(
+    //   `https://api.frankfurter.app/latest?from=${from}&to=${to}`,
+    // );
+
+    // const convertAmount = amount * response.data.rates[to];
+
+    // return convertAmount;
+  } catch (error) {}
 };

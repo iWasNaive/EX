@@ -1,13 +1,10 @@
-const axios = require("axios");
+const convert = require("./../utils/convert");
 
 exports.convert = async (req, res) => {
-  // const { amount, from, to } = req.body;
+  const { amount, from, to } = req.body;
 
-  const response = await axios.get(
-    `https://api.frankfurter.app/latest?from=AUD&to=CAD`,
-  );
+  const result = await convert(amount, from, to);
 
-  const rate = response.data.rates[to];
 
-  console.log(rate);
+  res.json({ amount: result });
 };
